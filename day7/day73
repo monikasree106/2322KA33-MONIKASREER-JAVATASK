@@ -1,0 +1,25 @@
+mysql> create database task3
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> CREATE TABLE student(
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     department VARCHAR(100) NOT NULL
+    -> );
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> CREATE TABLE IF NOT EXISTS student (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     department VARCHAR(100) NOT NULL
+    -> );
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> INSERT INTO student (name, department) VALUES
+    -> ('Moni', 'CSE'),
+    -> ('Anu', 'ECE'),
+    -> ('Ravi', 'IT');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> notee
