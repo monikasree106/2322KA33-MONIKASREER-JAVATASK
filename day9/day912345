@@ -1,0 +1,181 @@
+mysql> create database task912345;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use task912345;
+Database changed
+mysql> CREATE TABLE stud_marks (
+    ->     studname VARCHAR(50),
+    ->     marks INT
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> 
+mysql> INSERT INTO stud_marks VALUES 
+    -> ('sow', 90),
+    -> ('ana', 80),
+    -> ('tom', 75),
+    -> ('jer', 88),
+    -> ('akash', 95);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> SELECT * FROM stud_marks;
++----------+-------+
+| studname | marks |
++----------+-------+
+| sow      |    90 |
+| ana      |    80 |
+| tom      |    75 |
+| jer      |    88 |
+| akash    |    95 |
++----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT studname FROM stud_marks WHERE marks > 80;
++----------+
+| studname |
++----------+
+| sow      |
+| jer      |
+| akash    |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> CREATE TABLE course (
+    ->     course VARCHAR(100),
+    ->     fees_details INT
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> 
+mysql> INSERT INTO course VALUES
+    -> ('Computer science', 35000),
+    -> ('Computer technology', 35000),
+    -> ('BCA', 35000),
+    -> ('IT', 35000),
+    -> ('Psychology', 35000);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> SELECT * FROM course;
++---------------------+--------------+
+| course              | fees_details |
++---------------------+--------------+
+| Computer science    |        35000 |
+| Computer technology |        35000 |
+| BCA                 |        35000 |
+| IT                  |        35000 |
+| Psychology          |        35000 |
++---------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT course FROM course ORDER BY course ASC;
++---------------------+
+| course              |
++---------------------+
+| BCA                 |
+| Computer science    |
+| Computer technology |
+| IT                  |
+| Psychology          |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> CREATE TABLE course_details (
+    ->     course_name VARCHAR(50),
+    ->     fees INT
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> 
+mysql> INSERT INTO course_details VALUES
+    -> ('CS', 40000),
+    -> ('IT', 38000),
+    -> ('BCA', 42000),
+    -> ('CT', 35000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> SELECT * FROM course_details;
++-------------+-------+
+| course_name | fees  |
++-------------+-------+
+| CS          | 40000 |
+| IT          | 38000 |
+| BCA         | 42000 |
+| CT          | 35000 |
++-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM course_details ORDER BY fees ASC;
++-------------+-------+
+| course_name | fees  |
++-------------+-------+
+| CT          | 35000 |
+| IT          | 38000 |
+| CS          | 40000 |
+| BCA         | 42000 |
++-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM course_details WHERE fees = 42000;
++-------------+-------+
+| course_name | fees  |
++-------------+-------+
+| BCA         | 42000 |
++-------------+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM course_details WHERE course_name = 'CS';
++-------------+-------+
+| course_name | fees  |
++-------------+-------+
+| CS          | 40000 |
++-------------+-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> CREATE TABLE bookinfo (
+    ->     book_name VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> INSERT INTO bookinfo VALUES
+    -> ('alchemist'),
+    -> ('animal farm'),
+    -> ('the old man');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> SELECT * FROM bookinfo;
++-------------+
+| book_name   |
++-------------+
+| alchemist   |
+| animal farm |
+| the old man |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM bookinfo WHERE book_name LIKE 'a%';
++-------------+
+| book_name   |
++-------------+
+| alchemist   |
+| animal farm |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> USE tasks;
+Database changed
+mysql> SELECT * FROM course_details;
+ERROR 1146 (42S02): Table 'tasks.course_details' doesn't exist
+mysql> notee
