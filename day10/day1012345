@@ -1,0 +1,195 @@
+mysql> create database task(main4,post5)12345
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(main4,post5)12345' at line 1
+mysql> create database task123454;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> CREATE TABLE students (
+    ->     student_id INT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     marks INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> INSERT INTO students (student_id, name, marks) VALUES
+    -> (1, 'Ravi', 92),
+    -> (2, 'Priya', 78),
+    -> (3, 'Aarav', 85),
+    -> (4, 'Neha', 68),
+    -> (5, 'Manoj', 88);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM students
+    -> WHERE marks > 80;
++------------+-------+-------+
+| student_id | name  | marks |
++------------+-------+-------+
+|          1 | Ravi  |    92 |
+|          3 | Aarav |    85 |
+|          5 | Manoj |    88 |
++------------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE courses (
+    ->     course_id INT PRIMARY KEY,
+    ->     course_name VARCHAR(100),
+    ->     fees INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> INSERT INTO courses (course_id, course_name, fees) VALUES
+    -> (101, 'Java', 5000),
+    -> (102, 'Python', 3000),
+    -> (103, 'SQL', 4000),
+    -> (104, 'Data Science', 7000),
+    -> (105, 'Web Development', 4500);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM courses
+    -> ORDER BY fees ASC;
++-----------+-----------------+------+
+| course_id | course_name     | fees |
++-----------+-----------------+------+
+|       102 | Python          | 3000 |
+|       103 | SQL             | 4000 |
+|       105 | Web Development | 4500 |
+|       101 | Java            | 5000 |
+|       104 | Data Science    | 7000 |
++-----------+-----------------+------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE books (
+    ->     book_id INT PRIMARY KEY,
+    ->     title VARCHAR(255),
+    ->     author VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> 
+mysql> INSERT INTO books (book_id, title, author) VALUES
+    -> (1, 'Learning Java', 'John Smith'),
+    -> (2, 'Python for Beginners', 'Alice Johnson'),
+    -> (3, 'SQL Mastery', 'Robert White'),
+    -> (4, 'Effective Java', 'Joshua Bloch'),
+    -> (5, 'Advanced SQL Queries', 'Michael Green');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM books
+    -> WHERE title LIKE '%Java%' OR author LIKE '%Java%';
++---------+----------------+--------------+
+| book_id | title          | author       |
++---------+----------------+--------------+
+|       1 | Learning Java  | John Smith   |
+|       4 | Effective Java | Joshua Bloch |
++---------+----------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE customers (
+    ->     cust_id INT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     city VARCHAR(100),
+    ->     total_purchase INT
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> 
+mysql> INSERT INTO customers (cust_id, name, city, total_purchase) VALUES
+    -> (1, 'Arjun', 'Delhi', 15000),
+    -> (2, 'Meena', 'Mumbai', 9000),
+    -> (3, 'Krish', 'Delhi', 21000),
+    -> (4, 'Lata', 'Chennai', 5000),
+    -> (5, 'Manish', 'Bangalore', 12000);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE employees (
+    ->     emp_id INT PRIMARY KEY,
+    ->     name VARCHAR(100),
+    ->     department VARCHAR(50),
+    ->     salary INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> INSERT INTO employees (emp_id, name, department, salary) VALUES
+    -> (1, 'Rahul', 'HR', 45000),
+    -> (2, 'Sneha', 'IT', 60000),
+    -> (3, 'Amit', 'IT', 55000),
+    -> (4, 'Tina', 'Sales', 52000),
+    -> (5, 'Vikram', 'HR', 47000);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM customers
+    -> WHERE city = 'Delhi';
++---------+-------+-------+----------------+
+| cust_id | name  | city  | total_purchase |
++---------+-------+-------+----------------+
+|       1 | Arjun | Delhi |          15000 |
+|       3 | Krish | Delhi |          21000 |
++---------+-------+-------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM customers
+    -> WHERE total_purchase > 10000;
++---------+--------+-----------+----------------+
+| cust_id | name   | city      | total_purchase |
++---------+--------+-----------+----------------+
+|       1 | Arjun  | Delhi     |          15000 |
+|       3 | Krish  | Delhi     |          21000 |
+|       5 | Manish | Bangalore |          12000 |
++---------+--------+-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM customers
+    -> WHERE name LIKE 'M%';
++---------+--------+-----------+----------------+
+| cust_id | name   | city      | total_purchase |
++---------+--------+-----------+----------------+
+|       2 | Meena  | Mumbai    |           9000 |
+|       5 | Manish | Bangalore |          12000 |
++---------+--------+-----------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employees
+    -> WHERE department = 'IT';
++--------+-------+------------+--------+
+| emp_id | name  | department | salary |
++--------+-------+------------+--------+
+|      2 | Sneha | IT         |  60000 |
+|      3 | Amit  | IT         |  55000 |
++--------+-------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employees
+    -> ORDER BY salary DESC;
++--------+--------+------------+--------+
+| emp_id | name   | department | salary |
++--------+--------+------------+--------+
+|      2 | Sneha  | IT         |  60000 |
+|      3 | Amit   | IT         |  55000 |
+|      4 | Tina   | Sales      |  52000 |
+|      5 | Vikram | HR         |  47000 |
+|      1 | Rahul  | HR         |  45000 |
++--------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employees
+    -> WHERE name LIKE '%a%';
++--------+--------+------------+--------+
+| emp_id | name   | department | salary |
++--------+--------+------------+--------+
+|      1 | Rahul  | HR         |  45000 |
+|      2 | Sneha  | IT         |  60000 |
+|      3 | Amit   | IT         |  55000 |
+|      4 | Tina   | Sales      |  52000 |
+|      5 | Vikram | HR         |  47000 |
++--------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> notee

@@ -1,0 +1,92 @@
+mysql> create database task123
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use task123
+Database changed
+mysql> -- Student table
+mysql> CREATE TABLE student (
+    ->     student_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     age INT,
+    ->     department VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> 
+mysql> -- Course table
+mysql> CREATE TABLE course (
+    ->     course_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     course_name VARCHAR(100),
+    ->     course_fee DECIMAL(10, 2)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> -- Insert students
+mysql> INSERT INTO student (name, age, department) VALUES
+    -> ('Moni', 20, 'CSE'),
+    -> ('Arun', 21, 'ECE'),
+    -> ('Sita', 22, 'IT'),
+    -> ('Ravi', 20, 'EEE'),
+    -> ('Latha', 23, 'CIVIL');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> 
+mysql> -- Insert courses
+mysql> INSERT INTO course (course_name, course_fee) VALUES
+    -> ('Java Programming', 5000),
+    -> ('Python Basics', 4500),
+    -> ('SQL Fundamentals', 4000),
+    -> ('Web Development', 6000),
+    -> ('Data Structures', 5500);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from students
+    -> ;
+ERROR 1146 (42S02): Table 'task123.students' doesn't exist
+mysql> select * from student;
++------------+-------+------+------------+
+| student_id | name  | age  | department |
++------------+-------+------+------------+
+|          1 | Moni  |   20 | CSE        |
+|          2 | Arun  |   21 | ECE        |
+|          3 | Sita  |   22 | IT         |
+|          4 | Ravi  |   20 | EEE        |
+|          5 | Latha |   23 | CIVIL      |
++------------+-------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from course;
++-----------+------------------+------------+
+| course_id | course_name      | course_fee |
++-----------+------------------+------------+
+|         1 | Java Programming |    5000.00 |
+|         2 | Python Basics    |    4500.00 |
+|         3 | SQL Fundamentals |    4000.00 |
+|         4 | Web Development  |    6000.00 |
+|         5 | Data Structures  |    5500.00 |
++-----------+------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> -- Update course fee for Python Basics
+mysql> UPDATE course
+    -> SET course_fee = 4700
+    -> WHERE course_name = 'Python Basics';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from course;
++-----------+------------------+------------+
+| course_id | course_name      | course_fee |
++-----------+------------------+------------+
+|         1 | Java Programming |    5000.00 |
+|         2 | Python Basics    |    4700.00 |
+|         3 | SQL Fundamentals |    4000.00 |
+|         4 | Web Development  |    6000.00 |
+|         5 | Data Structures  |    5500.00 |
++-----------+------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> notee
